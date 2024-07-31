@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: Quiz-Engine-Service
+          uri: lb:http://QUIZ-ENGINE-SERVICE
+          predicates:
+            - Path=/quiz/**
+        - id: Question-Bank-Service
+          uri: lb:http://QUESTION-BANK-SERVICE
+          predicates:
+            - Path=/question/**
+server:
+  port: 8080
