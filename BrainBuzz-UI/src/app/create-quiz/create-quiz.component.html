@@ -1,0 +1,51 @@
+<!--<form>-->
+<!--  <div class="mb-3">-->
+<!--    <label for="title" class="form-label">Quiz Name</label>-->
+<!--    <input type="title" [(ngModel)]="quizRequest.title" class="form-control" name="title" id="title">-->
+<!--    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+<!--  </div>-->
+<!--  <div class="mb-3">-->
+<!--    <label for="category" class="form-label">Category : </label>-->
+<!--    <select [(ngModel)]="quizRequest.category" id="category" name="category">-->
+<!--  <option value="Java">Java</option>-->
+<!--  <option value="OS">OS</option>-->
+<!--  <option value="Hibernate">Hibernate</option>-->
+<!--  <option value="Spring">Spring</option>-->
+<!--</select>-->
+
+<!--  </div>-->
+<!--  <div class="mb-3 form-check">-->
+<!--    <label for="total" class="form-label">Total Questions : </label>-->
+<!--    <input type="number" [(ngModel)]="quizRequest.totalQuestions" class="form-number-input" name="total" id="total" min="1" max="10">-->
+<!--  </div>-->
+<!--  <button type="submit" class="btn btn-primary" (click)="createQuiz()">Create</button>-->
+<!--</form>-->
+
+<div class="container">
+  <form id="contact" action="" method="post">
+    <h3>Create Quiz</h3>
+    <h4>Create quiz with desired no of questions and category</h4>
+    <fieldset>
+      <input placeholder="Quiz title" [(ngModel)]="quizRequest.title" type="text" name="title" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      Select Category:
+      <select [(ngModel)]="quizRequest.category" id="category" name="category">
+  <option value="Java">Java</option>
+  <option value="OS">OS</option>
+  <option value="Hibernate">Hibernate</option>
+  <option value="Spring">Spring</option>
+</select>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Total questions" [(ngModel)]="quizRequest.totalQuestions" type="number" name="totalQuestions" tabindex="3"
+             required min="1"
+             max="10">
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="button" (click)="createQuiz()" id="contact-submit" data-submit="...Sending">Create</button>
+    </fieldset>
+  </form>
+
+
+</div>

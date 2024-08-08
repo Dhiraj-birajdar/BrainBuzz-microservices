@@ -16,6 +16,7 @@ public class Quiz {
     @Id
     private String id;
     private String title;
+    private String category;
 
 //    @DocumentReference(lazy = true) // todo: Simple string list no need of document ref
     private List<String> questionIds;

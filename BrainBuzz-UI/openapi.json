@@ -1,0 +1,247 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "BrainBuzz OpenAPI specification",
+        "description": "OpenApi documentation for BrainBuzz API",
+        "termsOfService": "https://www.brainbuzz.com/terms",
+        "contact": {
+            "name": "Dhiraj",
+            "url": "https://www.linkedin.com/in/dhiraj-birajdar-pune/",
+            "email": "papaertrail.bookshare@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Local server"
+        },
+        {
+            "url": "https://www.brainbuzz.com",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/quiz/submit": {
+            "post": {
+                "tags": [
+                    "Quiz"
+                ],
+                "operationId": "submitQuiz",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Response"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/quiz/create": {
+            "post": {
+                "tags": [
+                    "Quiz"
+                ],
+                "operationId": "createQuiz",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuizRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/quiz/getquiz": {
+            "get": {
+                "tags": [
+                    "Quiz"
+                ],
+                "operationId": "getQuiz",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/QuizResponse"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/quiz/get/{id}": {
+            "get": {
+                "tags": [
+                    "Quiz"
+                ],
+                "operationId": "getQuizQuestions",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/QuestionWrapper"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/quiz/deletequiz/{id}": {
+            "delete": {
+                "tags": [
+                    "Quiz"
+                ],
+                "operationId": "deleteQuiz",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Response": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "option": {
+                        "type": "string"
+                    }
+                }
+            },
+            "QuizRequest": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "totalQuestions": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "QuizResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "totalQuestions": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "QuestionWrapper": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "question": {
+                        "type": "string"
+                    },
+                    "a": {
+                        "type": "string"
+                    },
+                    "b": {
+                        "type": "string"
+                    },
+                    "c": {
+                        "type": "string"
+                    },
+                    "d": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

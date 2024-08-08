@@ -1,0 +1,27 @@
+<div class="quiz-container" *ngIf="!submitted">
+  <ol>
+    <li *ngFor="let q of quizQuestions">
+      <h2>{{ q.question }}</h2>
+
+      <ul>
+        <li>
+          <input type="radio" value="a" [name]="q.id" (click)="addAns(q.id,'a')"/>{{ q.a }}
+        </li>
+        <li>
+          <input type="radio" value="b" [name]="q.id" (click)="addAns(q.id,'b')"/>{{ q.b }}
+        </li>
+        <li>
+          <input type="radio" value="c" [name]="q.id" (click)="addAns(q.id,'c')"/>{{ q.c }}
+        </li>
+        <li>
+          <input type="radio" value="d" [name]="q.id" (click)="addAns(q.id,'d')"/>{{ q.d }}
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <button (click)="submitAnswer()">Submit</button>
+</div>
+
+<div class="score-container" *ngIf="submitted">
+  <p>Your score: {{ score }} out of {{ totalQuistions }}</p>
+</div>

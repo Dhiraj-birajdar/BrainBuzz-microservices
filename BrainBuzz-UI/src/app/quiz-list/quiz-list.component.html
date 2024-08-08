@@ -1,0 +1,22 @@
+<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">total questions</th>
+            <th scope="col">Play</th>
+            <th scope="col">Delete Quiz</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let q of quizResponse; let i = index">
+            <td scope="row">{{i+1}}</td>
+            <td>{{q.title}}</td>
+            <td>{{q.category}}</td>
+            <td>{{q.totalQuestions}}</td>
+            <td><a [routerLink]="['play',q.id]">Start</a></td>
+            <td><a [routerLink]="['/quizlist']" (click)="deleteQuiz(q.id)">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
